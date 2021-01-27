@@ -2,28 +2,6 @@ $ sqlite3 plane.sql
 SQLite version 3.31.1 2020-01-27 19:55:54
 Enter ".help" for usage hints.
 sqlite> CREATE TABLE plane (
-   ...> id INTEGER PRIMERY KEY AUTOINCREMENT,
-   ...> orgin TEXT NOT NULL,
-   ...> destination TEXT NOT NULL,
-   ...> duration INTEGER NOT NULL,
-   ...> );
-Error: near "AUTOINCREMENT": syntax error
-sqlite> CREATE TABLE plane (
-   ...> id INTEGER PRIMARY KEY AUTOINCREMENT,
-   ...> orgin TEXT NOT NULL,
-   ...> destination TEXT NOT NULL,
-   ...> duration INTEGER NOT NULL,
-   ...> );
-Error: near ")": syntax error
-sqlite> ^C
-sqlite> CREATE TABLE plane (
-   ...>     id INTEGER PRIMARY KEY AUTOINCREMENT,
-   ...>     orgin TEXT NOT NULL,
-   ...>     destination TEXT NOT NULL,
-   ...>     duration INTEGER NOT NULL,
-   ...>     );
-Error: near ")": syntax error
-sqlite> CREATE TABLE plane (
    ...>     id INTEGER PRIMARY KEY AUTOINCREMENT,
    ...>     orgin TEXT NOT NULL,
    ...>     destination TEXT NOT NULL,
@@ -31,25 +9,9 @@ sqlite> CREATE TABLE plane (
    ...>     );
 sqlite> .tables
 plane
-sqlite> INSERT INTO plane (orgin,destination,duration) VALUES ("New York","Karuvarakundu",12345)
-   ...> ;
-sqlite> SELECT * FROM plane
-   ...> ;
+sqlite> INSERT INTO plane (orgin,destination,duration) VALUES ("New York","Karuvarakundu",12345);
+sqlite> SELECT * FROM plane;
 1|New York|Karuvarakundu|12345
-sqlite> INSERT INTO plane (orgin,destination,duration) VALUES ("Punnakkadu","Karuvarakundu",2312)
-   ...> INSERT INTO plane (orgin,destination,duration) VALUES ("pandikkadu","Thirunai",22345)
-   ...> INSERT INTO plane (orgin,destination,duration) VALUES ("Karuvarakundu","koyilandi",2222)
-   ...> INSERT INTO plane (orgin,destination,duration) VALUES ("blablabla","albalbalb",1)
-   ...> INSERT INTO plane (orgin,destination,duration) VALUES ("Thenga","karikku",12345678)
-   ...>
-   ...>
-   ...>
-   ...>
-   ...> ^Z
-[1]+  Stopped                 sqlite3 plane.sql
-hp@py:~/Desktop$ sqlite3 plane.sql
-SQLite version 3.31.1 2020-01-27 19:55:54
-Enter ".help" for usage hints.
 sqlite> INSERT INTO plane (orgin,destination,duration) VALUES ("Punnakkadu","Karuvarakundu",2312);
 sqlite> INSERT INTO plane (orgin,destination,duration) VALUES ("pandikkadu","Thirunai",22345);
 sqlite> INSERT INTO plane (orgin,destination,duration) VALUES ("Karuvarakundu","koyilandi",2222);
@@ -57,8 +19,7 @@ sqlite> INSERT INTO plane (orgin,destination,duration) VALUES ("blablabla","alba
 sqlite> INSERT INTO plane (orgin,destination,duration) VALUES ("Thenga","karikku",12345678);
 sqlite> .tables
 plane
-sqlite> SELECT * FROM plane
-   ...> ;
+sqlite> SELECT * FROM plane;
 1|New York|Karuvarakundu|12345
 2|Punnakkadu|Karuvarakundu|2312
 3|pandikkadu|Thirunai|22345
@@ -72,11 +33,7 @@ sqlite> SELECT * FROM plane;
 4|Karuvarakundu|koyilandi|2222
 5|blablabla|albalbalb|1
 6|Thenga|karikku|12345678
-sqlite> .made columns
-Error: unknown command or invalid arguments:  "made". Enter ".help" for help
 sqlite> .mode columns
-sqlite> .headers
-Usage: .headers on|off
 sqlite> .headers on
 sqlite> SELECT * FROM plane;
 id          orgin       destination    duration
@@ -92,8 +49,7 @@ id          orgin       destination    duration
 ----------  ----------  -------------  ----------
 1           New York    Karuvarakundu  12345
 2           Punnakkadu  Karuvarakundu  2312
-sqlite> SELECT * FROM plane WHERE duration > 3000
-   ...> ;
+sqlite> SELECT * FROM plane WHERE duration > 3000;
 id          orgin       destination    duration
 ----------  ----------  -------------  ----------
 1           New York    Karuvarakundu  12345
@@ -120,15 +76,13 @@ id          orgin       destination    duration
 ----------  ----------  -------------  ----------
 2           Punnakkadu  Karuvarakundu  2312
 3           pandikkadu  Thirunai       22345
-sqlite> UPDATE plane SET destination = "Cochin" WHERE orgin = "pandikkadu" and duration = 22345
-   ...> ;
+sqlite> UPDATE plane SET destination = "Cochin" WHERE orgin = "pandikkadu" and duration = 22345;
 sqlite> SELECT * FROM plane WHERE orgin LIKE  "%kadu%" ;
 id          orgin       destination    duration
 ----------  ----------  -------------  ----------
 2           Punnakkadu  Karuvarakundu  2312
 3           pandikkadu  Cochin         22345
-sqlite> DELETE FROM plane WHERE orgin LIKE "%y%"
-   ...> ;
+sqlite> DELETE FROM plane WHERE orgin LIKE "%y%";
 sqlite> SELECT * FROM plane;
 id          orgin       destination    duration
 ----------  ----------  -------------  ----------
